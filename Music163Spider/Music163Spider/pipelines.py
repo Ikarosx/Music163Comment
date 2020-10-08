@@ -9,14 +9,17 @@ import pymongo
 
 class HotCommentPipeline(object):
     def process_item(self, item, spider):
+        # 判断是否有内容
         if item.get('content'):
+            # 只爬取点赞1w以上的
             if int(item.get('likedCount')) > 10000:
                 print(item.get('likedCount'))
                 return item
+        # 丢弃 
         raise DropItem("drop %s" % item.get('likedCount'))
 
 
-
+# 存储到mongodb
 class MongoPipeline:
 
     collection_name = 'hot_comment'
@@ -28,6 +31,7 @@ class MongoPipeline:
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
+            # 设置在settings.py
             mongo_uri=crawler.settings.get('MONGO_URI'),
             mongo_db=crawler.settings.get('MONGO_DATABASE', 'music163')
         )
