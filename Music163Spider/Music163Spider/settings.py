@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'Music163Spider.spiders'
 #USER_AGENT = 'Music163Spider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -64,9 +64,17 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'Music163Spider.pipelines.Music163SpiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'Music163Spider.pipelines.HotCommentPipeline': 300,
+   'Music163Spider.pipelines.MongoPipeline': 500,
+}
+
+# mongo
+MONGODB_HOST = '127.0.0.1'
+MONGODB_PORT = 27017
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_DATABASE = 'music163'
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
