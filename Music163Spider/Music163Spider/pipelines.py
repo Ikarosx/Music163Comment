@@ -11,13 +11,25 @@ class HotCommentPipeline(object):
     def process_item(self, item, spider):
         # 判断是否有内容
         if item.get('content'):
-            # 只爬取点赞1w以上的
+            # 爬取点赞1w以上的
             if int(item.get('likedCount')) > 10000:
                 print(item.get('likedCount'))
                 return item
         # 丢弃 
-        raise DropItem("drop %s" % item.get('likedCount'))
+        raise DropItem("drop 无内容")
 
+# 去重
+class DuplicatesPipeline(object):
+
+    def __init__(self):
+        self.ids_seen = set()
+
+    def process_item(self, item, spider):
+        if item['commentId'] in self.ids_seen:
+            raise DropItem("Duplicate commentId found: %s" % item['commentId'])
+        else:
+            self.ids_seen.add(item['commentId'])
+            return item
 
 # 存储到mongodb
 class MongoPipeline:
@@ -46,3 +58,4 @@ class MongoPipeline:
     def process_item(self, item, spider):
         self.db[self.collection_name].insert_one(dict(item))
         return item
+

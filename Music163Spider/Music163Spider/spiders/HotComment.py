@@ -35,14 +35,14 @@ class HotcommentSpider(scrapy.Spider):
                 # 获取热评的api 
                 nextPage = 'https://music.163.com/weapi/comment/resource/comments/get?csrf_token='
                 # formdata携带参数
-                yield scrapy.FormRequest(url=nextPage, formdata=Encrypyed().encrypt(data), callback=self.parseSong, meta={'songId': songId})
+                yield scrapy.FormRequest(url=nextPage, formdata=Encrypyed().encrypt(data), callback=self.parseSong, meta={'songId': songId}, dont_filter=False)
             else:
                 # 拼接url
                 nextPage = response.urljoin(href)
                 # 只递归这几个字符串开头的链接
-                if href.startswith('/artist') or href.startswith('/discover') or href.startswith('/playlist') or href.startswith('/album'):
+                # if href.startswith('/artist') or href.startswith('/discover') or href.startswith('/playlist') or href.startswith('/album'):
                     # self.logger.info('访问 %s' % nextPage)
-                    yield scrapy.Request(url=nextPage, callback=self.parse)
+                yield scrapy.Request(url=nextPage, callback=self.parse, dont_filter=False)
 
     # 解析热评
     def parseSong(self, response):
