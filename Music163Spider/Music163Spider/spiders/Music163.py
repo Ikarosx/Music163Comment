@@ -292,7 +292,7 @@ class Music163Spider(scrapy.Spider):
         ageStamp = response.css("#age::attr(data-age)").extract_first()
         if ageStamp:
             if ageStamp[0] == '-':
-                userItem['birthday'] = datetime.datetime(1970, 1, 1) + datetime.timedelta(seconds=int(ageStamp)/1000)
+                userItem['birthday'] = (datetime.datetime(1970, 1, 1) + datetime.timedelta(seconds=int(ageStamp)/1000)).strftime('%Y-%m-%d %H:%M:%S')
             else:
                 userItem['birthday'] = time.localtime(int(ageStamp) / 1000)
         # 0男1女
