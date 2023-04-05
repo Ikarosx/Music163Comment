@@ -182,9 +182,10 @@ class Music163SpiderDownloaderMiddleware(object):
                 # 如果查找用户信息出现网页不存在，可能是不存在，也可能需要换ip
                 # TODO
                 pass
-            spider.logger.warn(request.headers)
-            spider.logger.warn("你要查找的网页找不到，疑似请求频率过高,重新请求, %s, %s" % (request.url, request.meta['proxy'] if 'proxy' in request.meta else ''))
-            return self.dealRepeatRequests(request)
+            raise IgnoreRequest
+            # spider.logger.warn(request.headers)
+            # spider.logger.warn("你要查找的网页找不到，疑似请求频率过高,重新请求, %s, %s" % (request.url, request.meta['proxy'] if 'proxy' in request.meta else ''))
+            # return self.dealRepeatRequests(request)
         if '请稍候再试' in response.text:
             spider.logger.warn("请稍后再试，疑似请求频率过高,重新请求, %s" % request.url)
             return self.dealRepeatRequests(request)

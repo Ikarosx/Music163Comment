@@ -105,7 +105,7 @@ MONGO_DATABASE = 'music163'
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
 # MYSQL_URI = 'mysql+pymysql://Ikarosx:newLife2016@192.168.1.15:3306/music163'
-MYSQL_URI = 'mysql+pymysql://music163:music163@127.0.0.1:3306/music163'
+MYSQL_URI = 'mysql+pymysql://music163:music163@192.168.0.110:3306/music163'
 MYSQL_DATABASE = 'music163'
 MYSQL_USER = 'music163'
 MYSQL_PASSWORD = 'music163'
@@ -114,8 +114,8 @@ MYSQL_PASSWORD = 'music163'
 # 日志
 today = datetime.datetime.now()
 log_file_path = "log/music163_{}_{}_{}.log".format(today.year, today.month, today.day)
-LOG_LEVEL = "DEBUG"
-LOG_FILE = log_file_path
+LOG_LEVEL = "WARNING"
+# LOG_FILE = log_file_path
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
