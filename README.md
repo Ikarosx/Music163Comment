@@ -1,14 +1,19 @@
-# Music163Comment
-爬取网抑云音乐热评
+# Music163
+爬取网抑云音乐热评，包含歌曲评论等
 
 ## 目标
-递归爬取网易云歌曲以及取出1w点赞以上评论存到mongodb
+递归爬取网易云歌曲~~以及取出1w点赞以上~~评论存到mysql
+
+## 预准备
+- 导入sql, music163.sql
+- 修改settings.py中的mysql配置
 
 ## 使用
 ```shell
-# Music163Spider/Music163Spider目录下
-scrapy crawl HotComment 
-# 暂时中断
-scrapy crawl HotComment -s JOBDIR=crawls/HotComment
+cd Music163Spider
+# 启动爬虫
+scrapy crawl Music163 
+# 启动爬虫并保存爬取状态
+scrapy crawl Music163 -s JOBDIR=crawls/Music163
 ```
 

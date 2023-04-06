@@ -19,8 +19,9 @@ NEWSPIDER_MODULE = 'Music163Spider.spiders'
 ROBOTSTXT_OBEY = False
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 32
+# Maximum number of concurrent items (per response) to process in parallel in item pipelines
 CONCURRENT_ITEMS = 100
-CONCURRENT_REQUESTS_PER_DOMAIN = 1000000
+CONCURRENT_REQUESTS_PER_DOMAIN = 0
 
 RETRY_TIMES = 20
 DOWNLOAD_TIMEOUT = 10
@@ -78,9 +79,6 @@ EXTENSIONS = {
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'scrapy_redis.pipelines.RedisPipeline': 200,
-    # 'Music163Spider.pipelines.HotCommentPipeline': 300,
-    # 'Music163Spider.pipelines.DuplicatesPipeline': 400,
     'Music163Spider.pipelines.MySQLPipeline': 500,
 }
 # telnet
@@ -88,23 +86,10 @@ ITEM_PIPELINES = {
 TELNETCONSOLE_USERNAME = 'Ikarosx'
 TELNETCONSOLE_PASSWORD = 'Ikarosx'
 
-# redis
-REDIS_HOST = '127.0.0.1'
-REDIS_PORT = 6379
-REDIS_PARAMS = {
-    'password': 'newLife2016'
-}
-
-# mongo
-MONGODB_HOST = '127.0.0.1'
-MONGODB_PORT = 27017
-MONGO_URI = 'mongodb://localhost:27017'
-MONGO_DATABASE = 'music163'
 
 # mysql
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
-# MYSQL_URI = 'mysql+pymysql://Ikarosx:newLife2016@192.168.1.15:3306/music163'
 MYSQL_URI = 'mysql+pymysql://music163:music163@192.168.0.110:3306/music163'
 MYSQL_DATABASE = 'music163'
 MYSQL_USER = 'music163'
