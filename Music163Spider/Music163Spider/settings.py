@@ -88,12 +88,8 @@ TELNETCONSOLE_PASSWORD = 'Ikarosx'
 
 
 # mysql
-MYSQL_HOST = '127.0.0.1'
-MYSQL_PORT = 3306
 MYSQL_URI = 'mysql+pymysql://music163:music163@192.168.0.110:3306/music163'
-MYSQL_DATABASE = 'music163'
-MYSQL_USER = 'music163'
-MYSQL_PASSWORD = 'music163'
+
 
 
 # 日志
