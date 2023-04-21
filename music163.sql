@@ -52,7 +52,7 @@ CREATE TABLE `m_comment`  (
   `target_id` bigint NULL DEFAULT NULL COMMENT '对应ID',
   `target_name` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '对应名称',
   `person_id` bigint NOT NULL COMMENT '评论者id',
-  `person_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评论者名字',
+  `person_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评论者名字',
   `person_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评论者头像',
   `create_day` datetime NULL DEFAULT NULL COMMENT '评论日期',
   `liked_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
@@ -67,10 +67,10 @@ CREATE TABLE `m_comment`  (
 DROP TABLE IF EXISTS `m_djradio`;
 CREATE TABLE `m_djradio`  (
   `id` bigint NOT NULL,
-  `djradio_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '电台名称',
+  `djradio_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '电台名称',
   `cover_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电台封面',
   `create_person_id` bigint NULL DEFAULT NULL COMMENT '作者ID',
-  `create_person_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者名称',
+  `create_person_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者名称',
   `sub_count` int NOT NULL DEFAULT 0 COMMENT '订阅',
   `category_label` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分类名称',
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '描述',
@@ -93,9 +93,9 @@ CREATE TABLE `m_lyric`  (
   `tlrc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '翻译歌词',
   `tlrc_version` int NULL DEFAULT NULL COMMENT '翻译歌词版本',
   `lyric_person_id` int NULL DEFAULT NULL COMMENT '贡献歌词用户ID',
-  `lyric_person_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '贡献歌词用户名称',
+  `lyric_person_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '贡献歌词用户名称',
   `trans_person_id` int NULL DEFAULT NULL COMMENT '翻译歌词用户ID',
-  `trans_person_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '翻译歌词用户名称',
+  `trans_person_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '翻译歌词用户名称',
   `create_time` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 229391 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
@@ -106,7 +106,7 @@ CREATE TABLE `m_lyric`  (
 DROP TABLE IF EXISTS `m_mv`;
 CREATE TABLE `m_mv`  (
   `id` bigint NOT NULL,
-  `mv_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'MV名称',
+  `mv_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'MV名称',
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '简介',
   `duration` int NULL DEFAULT NULL COMMENT '时长',
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '封面url',
@@ -126,7 +126,7 @@ CREATE TABLE `m_mv`  (
 DROP TABLE IF EXISTS `m_person`;
 CREATE TABLE `m_person`  (
   `id` bigint NOT NULL,
-  `person_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名字',
+  `person_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名字',
   `person_img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
   `gender` tinyint(1) NULL DEFAULT NULL COMMENT '性别',
   `birthday` datetime NULL DEFAULT NULL COMMENT '出生日期',
@@ -145,10 +145,10 @@ CREATE TABLE `m_person`  (
 DROP TABLE IF EXISTS `m_playlist`;
 CREATE TABLE `m_playlist`  (
   `id` bigint NOT NULL,
-  `playlist_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '歌单名',
+  `playlist_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '歌单名',
   `playlist_img_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '专辑图片',
   `create_user_id` bigint NOT NULL COMMENT '创建者ID',
-  `create_user_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建者名字',
+  `create_user_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建者名字',
   `publish_time` date NULL DEFAULT NULL COMMENT '创建日期',
   `sub_count` int NOT NULL DEFAULT 0 COMMENT '收藏',
   `share_count` int NOT NULL DEFAULT 0 COMMENT '转发',
@@ -167,7 +167,7 @@ CREATE TABLE `m_program`  (
   `id` bigint NOT NULL,
   `djradio_id` bigint NOT NULL COMMENT '电台ID',
   `order` int NOT NULL COMMENT '顺序',
-  `program_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '节目名称',
+  `program_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '节目名称',
   `cover_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '封面图片',
   `play_count` int NOT NULL DEFAULT 0 COMMENT '播放次数',
   `liked_count` int NOT NULL DEFAULT 0 COMMENT '点赞次数',
@@ -185,7 +185,7 @@ DROP TABLE IF EXISTS `m_song`;
 CREATE TABLE `m_song`  (
   `id` bigint NOT NULL,
   `song_name` varchar(400) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '歌曲名',
-  `artist_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '歌手id，逗号隔开，冗余',
+  `artist_id` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '歌手id，逗号隔开，冗余',
   `artist_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '歌手名，逗号隔开，冗余',
   `duration` int NULL DEFAULT NULL COMMENT '单位秒',
   `url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '歌曲链接',
